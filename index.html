@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <h1>Rock Paper Scissors Game</h1>
-    <p>This is my first GitHub Pages project 🚀</p>
-    <p>Python version runs in terminal.</p>
+  <h1>Rock Paper Scissors 🎮</h1>
+
+  <p>Choose your move:</p>
+  <button onclick="playGame(0)">Rock ✊</button>
+  <button onclick="playGame(1)">Paper ✋</button>
+  <button onclick="playGame(2)">Scissors ✌️</button>
+
+  <h2 id="result"></h2>
+
+  <script>
+    const choices = ["Rock", "Paper", "Scissors"];
+
+    function playGame(userChoice) {
+      const computerChoice = Math.floor(Math.random() * 3);
+
+      let resultText = "";
+      resultText += "You choose: " + choices[userChoice] + "<br>";
+      resultText += "Computer chooses: " + choices[computerChoice] + "<br>";
+
+      if (userChoice === computerChoice) {
+        resultText += "It's a draw 🤝";
+      } else if (
+        (userChoice === 0 && computerChoice === 2) ||  // Rock beats Scissors
+        (userChoice === 2 && computerChoice === 1) ||  // Scissors beats Paper
+        (userChoice === 1 && computerChoice === 0)     // Paper beats Rock
+      ) {
+        resultText += "You win 🎉";
+      } else {
+        resultText += "You lose 😢";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
 </body>
 </html>
+
